@@ -2,6 +2,7 @@ package com.fulfilment.application.monolith.fulfilment.restapi;
 
 import com.fulfilment.application.monolith.fulfilment.model.AssignWarehouseDto;
 import com.fulfilment.application.monolith.fulfilment.usecases.WarehouseFulfilmentUsecase;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -11,6 +12,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 @Path("/fulfilment")
+@ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class WarehouseFulfilmentResource {

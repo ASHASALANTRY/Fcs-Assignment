@@ -4,7 +4,9 @@ import com.fulfilment.application.monolith.fulfilment.model.AssignWarehouseDto;
 import com.fulfilment.application.monolith.products.Product;
 import com.fulfilment.application.monolith.stores.Store;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 public class WarehouseFulfilmentRepository implements com.fulfilment.application.monolith.fulfilment.Ports.WarehouseFulfilmentRepository,PanacheRepository<WarehouseFulfilmentEntity> {
     @Override
     public Long warehouseAlreadyAssigned(Store store, Product product, String warehouseBusinessUnitCode){
