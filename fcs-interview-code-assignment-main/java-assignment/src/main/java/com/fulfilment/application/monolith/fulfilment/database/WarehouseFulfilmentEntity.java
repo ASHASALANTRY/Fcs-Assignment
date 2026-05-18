@@ -6,15 +6,16 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="warehouse_fulfilment",
-uniqueConstraints = @UniqueConstraint(columnNames = {"store_id","product_id","warehouse_bussiness_unit_code"}))
-public class WarehouseFulfilmentEntity extends PanacheEntity {
-@ManyToOne(optional = false)
-    @JoinColumn(name="id")
+@Table(name="warehouse_fulfilment" )
+public class WarehouseFulfilmentEntity {
+    @Id @GeneratedValue public Long fulfilment_id;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name="id", insertable=false, updatable=false)
     public Store store;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", insertable=false, updatable=false)
     public Product product;
 
     @Column(name = "warehouseBusinessUnitCode", nullable = false)
