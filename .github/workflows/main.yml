@@ -13,7 +13,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./java-assignment
+        working-directory: ./fcs-interview-code-assignment-main/java-assignment
 
     services:
       postgres:
