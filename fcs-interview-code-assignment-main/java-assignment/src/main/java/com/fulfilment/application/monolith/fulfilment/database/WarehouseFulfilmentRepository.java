@@ -10,7 +10,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class WarehouseFulfilmentRepository implements com.fulfilment.application.monolith.fulfilment.Ports.WarehouseFulfilmentRepository,PanacheRepository<WarehouseFulfilmentEntity> {
     @Override
     public Long warehouseAlreadyAssigned(Store store, Product product, String warehouseBusinessUnitCode){
-        return count("store ?1 and product.id= ?2 and warehouseBusinessUnitCode= ?3", store,product,warehouseBusinessUnitCode);
+        return count("store = ?1 and product = ?2 and warehouseBusinessUnitCode= ?3", store,product,warehouseBusinessUnitCode);
     }
 
     @Override
@@ -19,13 +19,13 @@ public class WarehouseFulfilmentRepository implements com.fulfilment.application
     }
     @Override
     public Integer MaxWarehousesPerStore(Store store){
-    Integer count=find("select distinct warehouseBusinessUnitCode from WarehouseFulfilment where store = ?1",store)
+    Integer count=find("select distinct warehouseBusinessUnitCode from WarehouseFulfilmentEntity where store = ?1",store)
                 .list()
                 .size();
     return count;}
     @Override
     public Integer maxProductTypePerWarehouse(AssignWarehouseDto warehouseDto){
-        Integer count=find("select distinct product.id from WarehouseFulfilment where warehouseBusinessUnitCode = ?1",
+        Integer count=find("select distinct product.id from WarehouseFulfilmentEntity where warehouseBusinessUnitCode = ?1",
                 warehouseDto.warehouseBusinessUnitCode)
                 .list()
                 .size();

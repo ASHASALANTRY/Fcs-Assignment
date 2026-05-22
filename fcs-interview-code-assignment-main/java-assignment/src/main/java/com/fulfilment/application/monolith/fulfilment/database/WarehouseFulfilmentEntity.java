@@ -11,11 +11,11 @@ public class WarehouseFulfilmentEntity {
     @Id @GeneratedValue public Long fulfilment_id;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name="id", insertable=false, updatable=false)
+    @JoinColumn(name="store_id",nullable = false)
     public Store store;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id", insertable=false, updatable=false)
+    @JoinColumn(name = "product_id", nullable = false)
     public Product product;
 
     @Column(name = "warehouseBusinessUnitCode", nullable = false)

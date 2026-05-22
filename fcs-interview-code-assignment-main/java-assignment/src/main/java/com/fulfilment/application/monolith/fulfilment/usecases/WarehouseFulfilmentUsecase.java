@@ -12,6 +12,7 @@ import com.fulfilment.application.monolith.warehouses.domain.models.Warehouse;
 import com.fulfilment.application.monolith.warehouses.domain.ports.WarehouseStore;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.BadRequestException;
 
 import java.util.Objects;
@@ -26,7 +27,7 @@ public class WarehouseFulfilmentUsecase {
     @Inject
     WarehouseStore warehouseStore;
 
-
+    @Transactional
     public AssignWarehouseDto assign(AssignWarehouseDto data) {
         Store store= Store.findById(data.storeId);
         if(Objects.isNull(store))
